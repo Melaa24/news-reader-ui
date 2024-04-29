@@ -95,6 +95,10 @@ export function NewsReader() {
   }
 
   function onFormSubmit(queryObject) {
+    if (currentUser === null){
+      alert("Log in if you want to create new queries!")
+      return;
+    }
     if (savedQueries.length >= 3 && currentUserMatches("guest")) {
       alert("guest users cannot submit new queries once saved query count is 3 or greater!")
       return;
