@@ -84,9 +84,9 @@ export function NewsReader() {
   }
 
   function currentUserMatches(user) {
-    if (params.currentUser) {
-      if (params.currentUser.user) {
-        if (params.currentUser.user === user) {
+    if (currentUser) {
+      if (currentUser.user) {
+        if (currentUser.user === user) {
           return true;
         }
       }
