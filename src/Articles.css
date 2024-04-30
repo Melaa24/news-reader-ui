@@ -1,0 +1,10 @@
+.titleLink {
+    text-decoration-line: none;
+    color: black;
+}
+
+.titleLink:hover {
+    background-color: #28A3AF;
+    color: #F5F5F5;
+    font-weight: bold;
+}
