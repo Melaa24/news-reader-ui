@@ -6,16 +6,20 @@ export function SavedQueries(params) {
 
     async function resetQueries(){
       let deleteQueries = "./queries/reset"
-      try {
-        const response = await fetch(deleteQueries, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-        })
-        if (response.ok) {
-          alert("Saved queries have been reset")
+      if (window.confirm('Are you sure you want to delete all saved queires?')) {
+        try {
+          const response = await fetch(deleteQueries, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+          })
+          if (response.ok) {
+            alert("Saved queries have been reset")
+          }
+        } catch (error) {
+          console.error('Error fetching news:', error);
         }
-      } catch (error) {
-        console.error('Error fetching news:', error);
+      } else {
+        alert("No saved queries have been removed.")
       }
     }
   
