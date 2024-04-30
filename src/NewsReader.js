@@ -13,6 +13,7 @@ export function NewsReader() {
   const [savedQueries, setSavedQueries] = useState([{ ...exampleQuery }]);
   const [currentUser, setCurrentUser] = useState(null);
   const [credentials, setCredentials] = useState({ user: "", password: "" });
+  const [detailsOn, setDetailsOn] = useState(true);
   const urlNews = "/news"
   const urlQueries = "/queries"
   const urlUsersAuth = "/users/authenticate";
@@ -162,7 +163,7 @@ export function NewsReader() {
           </div>
           <div className="box">
             <span className='title'>Articles List</span>
-            <Articles query={query} data={data} />
+            <Articles query={query} data={data} detailsOn={detailsOn} setDetailsOn={setDetailsOn}/>
           </div>
         </section>
       </div>

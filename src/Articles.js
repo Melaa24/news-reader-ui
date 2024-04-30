@@ -5,13 +5,31 @@ export function Articles(params) {
     let articleCount = (params.data.totalResults)?params.data.totalResults:0;
 
     function displayQueryDetails(query) {
-        return (
-          <ul>
-            <li>Subject: {query.q}</li>
-            <li>Language: {query.language}</li>
-            <li>Page Size: {query.pageSize}</li>
-          </ul>
-        )
+        function handleClick() {
+          if (params.detailsOn) {
+            params.setDetailsOn(false)
+          } else {
+            params.setDetailsOn(true)
+          }
+        }
+
+        if (params.detailsOn) {
+          return (
+            <>
+              <button onClick={handleClick}>Hide Details</button>
+              <ul>
+                <li>Subject: {query.q}</li>
+                <li>Language: {query.language}</li>
+                <li>Page Size: {query.pageSize}</li>
+              </ul>
+            </> )
+        } else {
+          return (
+            <>
+              <button onClick={handleClick}>Show Details</button>
+            </>
+          )
+        }
     };
 
     return (
