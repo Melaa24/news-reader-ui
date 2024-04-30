@@ -71,3 +71,12 @@ code {
 .moreVisible{
   display:block;
 }
+
+#scroll {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.reset {
+  margin-top: 5px;
+}
