@@ -35,7 +35,7 @@ export function Articles(params) {
     };
 
     return (
-      <div>
+      <div className={"scroll"}>
         Query Name: {queryName}
         <br />Query Details: {displayQueryDetails(queryDetails)}
         <br/>Count: {articleCount}
