@@ -13,6 +13,17 @@ export function SavedQueries(params) {
       return false;
     }
 
+    function currentUserIsAdmin() {
+      if (params.currentUser) {
+          if (params.currentUser.user) {
+              if (params.currentUser.user === "admin") {
+                  return true;
+              }
+          }
+      }
+      return false;
+    }
+
     async function resetQueries(){
       let deleteQueries = "./queries"
       if (window.confirm('Are you sure you want to delete all saved queires?')) {
@@ -36,12 +47,24 @@ export function SavedQueries(params) {
     function getQueries() {
       return params.savedQueries.map((item, idx) => {
         let trimTitle = item.queryName.substring(0, 30);
-        return (<li 
-          key={idx} 
-          onClick={()=>onSavedQueryClick(item)} 
-          className={(item.queryName === params.selectedQueryName)?"selected":""}
-        >{trimTitle + ": \"" + item.q + "\""} </li>);
-      })
+        if (currentUserIsAdmin()) {
+          return (<li 
+            key={idx} 
+            onClick={()=>onSavedQueryClick(item)} 
+            className={(item.queryName === params.selectedQueryName)?"selected":""}>
+            {"NAME: " + trimTitle}<br />
+            {"KEY WORD: " + item.q}<br />
+            {"LANGUAGE: " + item.language}<br />
+            {"PAGE SIZE: " + item.pageSize}</li>)
+        } else {
+          return (<li 
+            key={idx} 
+            onClick={()=>onSavedQueryClick(item)} 
+            className={(item.queryName === params.selectedQueryName)?"selected":""}>
+            {"NAME: " + trimTitle}<br />
+            {"KEY WORD: " + item.q}<br /></li>);
+        }}
+      )
     } 
 
     function getPublicQueries() {
@@ -57,14 +80,14 @@ export function SavedQueries(params) {
   
     return (
       <>
-      <div className={currentUser()?"visible":"hidden"}>
-          <ul >{
-            (params.savedQueries && params.savedQueries.length > 0)
-            ? getQueries()
-            : <li>No Saved Queries, Yet!</li>
-          }</ul>
-          <button onClick={resetQueries}>Reset Saved Queries</button>
-        </div>
+      <div id="scroll" className={currentUser()?"visible":"hidden"}>
+        <button onClick={resetQueries} className={"reset"}>Reset Saved Queries</button>
+        <ul >{
+          (params.savedQueries && params.savedQueries.length > 0)
+          ? getQueries()
+          : <li>No Saved Queries, Yet!</li>
+        }</ul>
+      </div>
         <div className={!currentUser()?"visible":"hidden"}>
           <ul>
             {getPublicQueries()}
