@@ -1,10 +1,23 @@
 export function Articles(params) {
     let articles = (params.data.articles)?params.data.articles:[];
     let queryName = (params.query.queryName)?params.query.queryName:"na";
+    let queryDetails = (params.query)?params.query:"na";
     let articleCount = (params.data.totalResults)?params.data.totalResults:0;
+
+    function displayQueryDetails(query) {
+        return (
+          <ul>
+            <li>Subject: {query.q}</li>
+            <li>Language: {query.language}</li>
+            <li>Page Size: {query.pageSize}</li>
+          </ul>
+        )
+    };
+
     return (
       <div>
-        Query: {queryName}
+        Query Name: {queryName}
+        <br />Query Details: {displayQueryDetails(queryDetails)}
         <br/>Count: {articleCount}
         <ol >{
             articles.map((item, idx) => {
