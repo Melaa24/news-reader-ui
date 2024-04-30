@@ -21,6 +21,7 @@ export function SavedQueries(params) {
           })
           if (response.ok) {
             alert("Saved queries have been reset")
+            params.setSavedQueries([])
           }
         } catch (error) {
           console.error('Error fetching news:', error);
