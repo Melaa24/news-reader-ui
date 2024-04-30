@@ -148,7 +148,7 @@ export function NewsReader() {
       <div >
         <section className="parent" >
           <div className="box">
-            <span className='title'>Query Form</span>
+            <span className='title'>{currentUser?"Query Form":"Sign in to Search"}</span>
             <QueryForm
               currentUser={currentUser}
               setFormObject={setQueryFormObject}
@@ -156,7 +156,7 @@ export function NewsReader() {
               submitToParent={onFormSubmit} />
           </div>
           <div className="box">
-            <span className='title'>Saved Queries</span>
+            <span className='title'>{currentUser?"Saved Queries":"Public Queries"}</span>
             <SavedQueries savedQueries={savedQueries}
                           currentUser={currentUser}
                           setSavedQueries={setSavedQueries}
