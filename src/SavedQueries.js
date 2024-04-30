@@ -12,11 +12,11 @@ export function SavedQueries(params) {
     }
 
     async function resetQueries(){
-      let deleteQueries = "./queries/reset"
+      let deleteQueries = "./queries"
       if (window.confirm('Are you sure you want to delete all saved queires?')) {
         try {
           const response = await fetch(deleteQueries, {
-            method: 'POST',
+            method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
           })
           if (response.ok) {
