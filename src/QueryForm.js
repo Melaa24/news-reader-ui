@@ -30,8 +30,15 @@ export function QueryForm(params) {
         return false;
     }
 
+    function currentUser() {
+        if (params.currentUser) {
+          return true;
+        }
+        return false;
+      }
+
     return (
-        <div>
+        <div className={(currentUser())?"visible":"hidden"}>
             <form>
                 <div>
                     <label htmlFor="queryName">Query Name: </label>

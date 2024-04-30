@@ -1,3 +1,5 @@
+import { cannedQueries } from './data';
+
 export function SavedQueries(params) {
   
     function onSavedQueryClick(savedQuery){
@@ -41,16 +43,33 @@ export function SavedQueries(params) {
         >{trimTitle + ": \"" + item.q + "\""} </li>);
       })
     } 
+
+    function getPublicQueries() {
+      return cannedQueries.map((item, idx) => {
+        let trimTitle = item.queryName.substring(0, 30);
+        return (<li 
+          key={idx} 
+          onClick={()=>onSavedQueryClick(item)} 
+          className={(item.queryName === params.selectedQueryName)?"selected":""}
+        >{trimTitle + ": \"" + item.q + "\""} </li>);
+      })
+    } 
   
     return (
-        <div>
+      <>
+      <div className={currentUser()?"visible":"hidden"}>
           <ul >{
             (params.savedQueries && params.savedQueries.length > 0)
             ? getQueries()
             : <li>No Saved Queries, Yet!</li>
           }</ul>
-          <button onClick={resetQueries} className={currentUser()?"visible":"hidden"}>Reset Saved Queries</button>
+          <button onClick={resetQueries}>Reset Saved Queries</button>
         </div>
+        <div className={!currentUser()?"visible":"hidden"}>
+          <ul>
+            {getPublicQueries()}
+          </ul>
+        </div>
+      </> 
       )
-    
     }

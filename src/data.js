@@ -30,3 +30,23 @@ export const exampleData = { "status": "ok",
                                             "content": "Samsung says Bixbys still not dead\r\nSamsung says Bixbys still not dead\r\n / The company is working on improving its voice assistant with generative AI instead of replacing it.\r\nByAllison Johnson, a re… [+1682 chars]" }
                                         ] 
                                     };
+export const cannedQueries = [
+    {
+        "queryName": "Public01", 
+        "q": "work", 
+        "language": "en", 
+        "pageSize": 10 
+    },
+    {
+        "queryName": "Public02", 
+        "q": "medical", 
+        "language": "en", 
+        "pageSize": 10 
+    },
+    {
+        "queryName": "Public03", 
+        "q": "test", 
+        "language": "en", 
+        "pageSize": 10 
+    }
+]
