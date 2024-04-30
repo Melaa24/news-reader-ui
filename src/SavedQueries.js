@@ -4,6 +4,13 @@ export function SavedQueries(params) {
       params.onQuerySelect(savedQuery);
     }
 
+    function currentUser() {
+      if (params.currentUser) {
+        return true;
+      }
+      return false;
+    }
+
     async function resetQueries(){
       let deleteQueries = "./queries/reset"
       if (window.confirm('Are you sure you want to delete all saved queires?')) {
@@ -41,7 +48,7 @@ export function SavedQueries(params) {
             ? getQueries()
             : <li>No Saved Queries, Yet!</li>
           }</ul>
-          <button onClick={resetQueries}>Reset Saved Queries</button>
+          <button onClick={resetQueries} className={currentUser()?"visible":"hidden"}>Reset Saved Queries</button>
         </div>
       )
     
