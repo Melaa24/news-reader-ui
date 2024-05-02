@@ -35,9 +35,9 @@ code {
 }
 
 .box{
-  border:1px solid black;
+  border:1px solid rgb(26, 20, 70);
   flex:1;
-  padding: 5px;
+  padding: 10px;
   max-width: 300px;
   font-size: small;
 }
@@ -50,8 +50,8 @@ code {
 .title{
   font-weight: bold;
   display: block;
-  background-color: #888;
-  color: white;
+  background-color: rgb(255, 208, 0);
+  color: rgb(26, 20, 70);
 }
 
 .selected{

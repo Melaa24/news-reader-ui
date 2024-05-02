@@ -11,4 +11,6 @@ ol{
 
 header,p{
   font-weight:bold;
+  color: rgb(26, 20, 70);
+  background-color: rgb(255, 208, 0);
 }
